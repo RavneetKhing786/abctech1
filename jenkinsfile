@@ -81,7 +81,7 @@ pipeline {
         stage('Deploy as Docker Container') {
             steps {
                     echo '🚀 Deploying the app...'
-                    sh 'docker run -itd --name abc-edu-project rav4coder/edu-abc-project-rep:$BUILD_NUMBER'
+                    sh 'docker run -d -p 8080:8080 --name abc-edu-project rav4coder/edu-abc-project-rep:$BUILD_NUMBER'
                     echo 'docker container is running'    
                  }
         }
