@@ -70,7 +70,7 @@ pipeline {
                 echo '🚀 Register to Docker hub registry and push image to docker hub repo'
                 // Add deployment steps here
                 // This step should not normally be used in your script. Consult the inline help for details.
-                    withDockerRegistry(credentialsId: 'dockerhub-creds', url: 'https://registry.hub.docker.com/'){
+                    withDockerRegistry(credentialsId: 'dockerhub-creds', url: ''){
                         // some block
                         echo "Successfully, Docker login to Docker Hub"
                         sh 'docker push rav4coder/edu-abc-project-rep:$BUILD_NUMBER'
