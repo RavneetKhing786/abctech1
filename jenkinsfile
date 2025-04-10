@@ -1,0 +1,45 @@
+pipeline {
+    agent any
+
+
+    stages {
+
+        stage('Checkout') {
+            steps {
+                echo '🔄 Checking out code on git repo...'
+                git url: 'https://github.com/RavneetKhing786/abctech1.git', branch: 'master'
+            }
+        }
+
+        stage('Build') {
+            steps {
+                echo '🔨 Building the project with compiler...'
+                sh 'mvn clean compile'
+            }
+        }
+
+        stage('Test') {
+            steps {
+                echo '🧪 Running tests on projects...'
+                sh 'mvn test'
+            }
+        }
+
+        stage('Package') {
+            steps {
+                echo '📦 Packaging the app or project...'
+                sh 'mvn package'
+                archiveArtifacts artifacts: 'target/*.war', fingerprint: true
+            }
+        }
+    }
+
+    post {
+        success {
+            echo '✅ Build and packaging completed successfully!'
+        }
+        failure {
+            echo '❌ Build failed. Please check logs.'
+        }
+    }
+}
