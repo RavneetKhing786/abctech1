@@ -72,7 +72,6 @@ pipeline {
                 // This step should not normally be used in your script. Consult the inline help for details.
                     withDockerRegistry(credentialsId: 'dockerhub-creds', url: 'https://registry.hub.docker.com/'){
                         // some block
-                        sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
                         echo "Successfully, Docker login to Docker Hub"
                         sh 'docker push rav4coder/edu-abc-project-rep:$BUILD_NUMBER'
                         echo "Successfully,Docker image pushed to Docker Hub with tag: $BUILD_NUMBER"
