@@ -1,8 +1,26 @@
 pipeline {
     agent any
-
-
+    tools {
+        maven 'Maven 3.8.7'
+        jdk 'jdk-21'
+    }
     stages {
+        stage('Initialize') {
+            steps {
+                sh '''
+                    echo '🔧 Initializing environment...'
+                    echo "MAVEN_HOME = ${MAVEN_HOME}"
+                    echo "JDK_HOME = ${JDK_HOME}"
+                    echo "WORKSPACE = ${WORKSPACE}"
+                    echo "BUILD_NUMBER = ${BUILD_NUMBER}"
+                    echo "JOB_NAME = ${JOB_NAME}"
+                    echo "PATH = ${PATH}"
+                    echo "M2_HOME = ${M2_HOME}"
+                    echo "JAVA_HOME = ${JAVA_HOME}"
+                '''
+               
+            }
+        }
 
         stage('Checkout') {
             steps {
