@@ -86,15 +86,15 @@ pipeline {
                  }
         }
 
-        post {
+    }
+    post {
             success {
                 echo '✅ Build and packaging completed successfully!'
             }
             failure {
                 echo '❌ Build failed. Please check logs.'
             }
-        }
     }
-
+   
 }
 
