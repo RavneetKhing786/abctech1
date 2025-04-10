@@ -3,7 +3,7 @@ pipeline {
     tools {
         maven 'my-maven'
         jdk 'MYJDK'
-        docker 'MY-DOCKER-HUB'
+        
     }
     stages {
         stage('Initialize') {
