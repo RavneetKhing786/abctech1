@@ -74,16 +74,18 @@ pipeline {
                         // some block
                         echo "Successfully, Docker login to Docker Hub"
                         sh 'docker push rav4coder/edu-abc-project-rep:$BUILD_NUMBER'
+                        sh 'docker image ls'
                         echo "Successfully,Docker image pushed to Docker Hub with tag: $BUILD_NUMBER"
                     }
             }
         }
 
-        stage('Deploy as Docker Container') {
+        stage('Deploy as Container') {
             steps {
-                    echo '🚀 Deploying the app...'
-                    sh 'sudo docker run -itd P --name abc-edu-project rav4coder/edu-abc-project-rep:$BUILD_NUMBER'
-                    echo 'docker container is running'    
+                    echo '🚀 Deploying Container and publish it...'
+                    sh 'docker run -itd -P rav4coder/edu-abc-project-rep:$BUILD_NUMBER'
+                    echo 'docker container is running successfully'   
+                    sh 'docker ps -a' 
                  }
         }
 
